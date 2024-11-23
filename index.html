@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>portfolio project</title>
+    <!-- Font Awesome CDN -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="portfolio.css">
+</head>
+<body>
+ <div id="MAIN">
+    <div class="box">
+        <nav>
+            <img src="images/portfoliologo.img.png" alt="Description of the image" class="logo">
+            <ul class="indian">
+                <li><a href="#main"><button class="navi">HOME</button> </a></li>
+                <li><a href="#my"><button class="navi" >About</button></a></li>
+                <li><a href="#portfolio"><button class="navi">Projects</button> </a></li>
+                <!-- <li><a href="#"><button class="navi">Achievement</button> </a></li> -->
+                <li><a href="#contact"><button class="navi">contact</button> </a></li>
+            </ul>
+        </nav>
+         <div class="first">  
+            <h1>Hey,I'm Anup</h1> 
+            <p> I am a passionate, <span id="changing-text"></span></p>
+            <div class="download-cv">
+              <a href="path/to/your-cv.pdf" download="YourName-CV.pdf" class="cv-button">
+                <i class="fa-solid fa-download"></i> Download CV
+              </a>
+            </div>
+        </div> 
+    </div>
+ </div>
+ <!-- ------------------------------------------------------------------------------------------about---------------------------------------- -->
+ <div id="my">
+    <div class="contain">
+
+    <div id="row">
+
+        <div id="about-col-1">
+            <img src="images/boy.png"></div>
+        
+        <div id="about-col-2"> <h1 class="subtitle">About Me</h1>
+        <p>Hi! I’m Anup,Enthusiastic engineering student with basic knowledge in coding and design. Proficient in C++. Ability to learn new softwares and technologies quickly. Capability to work in teams by providing valuable support. My journey in tech started with solving coding challenges on platforms like LeetCode, where I enjoy tackling complex problems and improving my skills in data structures and algorithms.</p>
+        <div class = "tab-titles">
+            <p class = "tab-links " onclick="opentab('skills')">Skills</p>
+            <p class="tab-links"onclick="opentab('Experience')">Experience</p>
+            <p class="tab-links"onclick="opentab('Education')">Education</p>
+        </div>
+        
+      <div class="tab-contents active-tab " id="skills">
+        <ul>
+            <li><span>UI/UX</span><br>Dsigning Web/App interfaces</li>
+            <li><span>Web Development</span><br>Web app Development</li>
+            <li><span>Problem Solving</span><br>Data Structure and Algorithm</li>
+
+        </ul>
+      </div> 
+
+      <div class="tab-contents" id="Experience">
+        <ul>
+            <li><span>2023...</span><br> 10+ Web application</li>
+            <li><span>2023...</span><br>Solved 150+ coding challenges on LeetCode , focusing on data structures and algorithms.</li>
+            <li><span>2022</span><br>Dsigning youtube Thumbnails using canva</li>
+
+        </ul>
+      </div> 
+
+      <div class="tab-contents" id="Education">
+        <ul>
+            
+            <li><span>2023</span><br>B.tech CSE from BPIT</li>
+            <li><span>2022</span><br>intermediate from L.B.S School </li>
+            <li><span>2020</span><br>matriculation from L.B.S School</li>
+
+        </ul>
+      </div> 
+
+    </div>
+    </div>
+
+    </div>
+ </div>
+<!-----------------------------------------my work-------------------------------------------------------------------------------------------- -->
+<div id ="portfolio">
+<div class="container">
+  <h4 class = "sub-title">My Projects</h4>
+  <div class="work-list">
+    <div class="work">
+      <img src="images/work3.jpg">
+
+      <div class="layer">
+        <h3>bat ball stump game</h3>
+        <p>A game based on user and computer action</p>
+        <a href="https://anupthakurr.github.io/bat-ball-game/"><button id="view"><i class="fa-solid fa-link"></i>view project</button></a>
+      </div>
+
+    </div>
+    <div class="work">
+      <img src="images/DALL·E 2024-11-20 15.54.43 - A sleek, modern web design portfolio section showcasing a Myntra clone development project. The interface displays elements inspired by Myntra, includ.webp">
+
+      <div class="layer">
+        <h3>Myntra Clone</h3>
+        <p>practice project</p>
+        <a href="#"><button id="view"><i class="fa-solid fa-link"></i>view project</button></a>
+      </div>
+
+    </div>
+    <div class="work">
+      <img src="images\DALL·E 2024-11-20 15.55.41 - A sleek, modern web design portfolio section showcasing a calculator development project. The interface features a digital calculator layout with a cl.webp">
+
+      <div class="layer">
+        <h3>calculator</h3>
+        <p>A simple calculator</p>
+        <a href="https://anupthakurr.github.io/calculatorr/"><button id="view"><i class="fa-solid fa-link"></i>view project</button></a>
+      </div>
+
+    </div>
+  </div>
+</div>
+</div>
+<!-- --------------------------------------------------contact me------------------------------------------------------------------------------ -->
+
+<section id="contact">
+  <div class="container">
+    <h2>Contact Me</h2>
+    <p>If you'd like to get in touch, feel free to reach out!</p>
+
+    <div class="contact-form">
+      <form action="https://formspree.io/f/xkgnzagp" method="POST">
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" placeholder="Your Name" required />
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" placeholder="Your Email" required />
+        </div>
+
+        <div class="form-group">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" rows="5" placeholder="Your Message" required></textarea>
+        </div>
+
+        <button type="submit">Send Message</button>
+      </form>
+    </div>
+     
+    <div class="social-links">
+      <a href=https://github.com/Anupthakurr target="_blank" class="git"><i class="fa-brands fa-github"></i> GitHub</a>
+      <a href=https://linkedin.com/in/anup-thakur-5b75a01b1 target="_blank" class="link"><i class="fa-brands fa-linkedin"></i>LinkedIn</a>
+      <a href="mailto: tanup229@gmail.com" class="mail"><i class="fa-solid fa-envelope" ></i>Email Me</a>
+    </div>
+   
+  </div>
+</section>
+<!-- ----------------------------------------------------------------------------------------------------------------------------------------- -->
+
+
+ <script>
+     const roles = ["Software Developer", "Web Designer", "Coder", "Tech Enthusiast", "Freelancer"];
+let index = 0;
+let charIndex = 0;
+let isDeleting = false;
+const typingSpeed = 100; 
+const deletingSpeed = 50; 
+const delayBetweenWords = 1500; 
+    function typeEffect() {
+      const textElement = document.getElementById("changing-text");
+      const currentRole = roles[index];
+
+      if (isDeleting) {
+        textElement.textContent = currentRole.substring(0, charIndex--);
+      } else {
+        textElement.textContent = currentRole.substring(0, charIndex++);
+      }
+
+      if (!isDeleting && charIndex === currentRole.length) {
+        isDeleting = true;
+        setTimeout(typeEffect, delayBetweenWords);
+      } else if (isDeleting && charIndex === 0) {
+        isDeleting = false;
+        index = (index + 1) % roles.length;
+        setTimeout(typeEffect, typingSpeed);
+      } else {
+        const speed = isDeleting ? deletingSpeed : typingSpeed;
+        setTimeout(typeEffect, speed);
+      }
+    }
+
+    typeEffect();
+
+  // -----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+    var tablinks = document.getElementsByClassName("tab-links");
+    var tabcontents = document.getElementsByClassName("tab-contents");
+
+    function opentab(tabname){
+        for(let tabcontent of tabcontents){
+         tabcontent.classList.remove("active-tab")
+        }
+        document.getElementById(tabname).classList.add("active-tab");
+    }
+    //-------------------------------------------------------------------------------------------------------------------------------------------------------------------- 
+ </script>
+
+
+</body>
+</html>
