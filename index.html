@@ -9,11 +9,19 @@
     <link rel="stylesheet" href="portfolio.css">
 </head>
 <body>
- <div id="MAIN">
-  <div class="cursor"></div>
-    <div class="box">
+  <div id="MAIN" style="position: relative;">
+  <script type="module" src="https://unpkg.com/@splinetool/viewer@latest/build/spline-viewer.js"></script>
+  <spline-viewer url="https://prod.spline.design/Slk6b8kz3LRlKiyk/scene.splinecode" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; will-change: transform; transform: translateZ(0);"></spline-viewer>
+  <script>
+    // Prevent the Spline viewer from swallowing scroll events while keeping mouse hover active
+    const mainDiv = document.getElementById('MAIN');
+    mainDiv.addEventListener('wheel', (e) => { e.stopPropagation(); }, { capture: true, passive: true });
+    mainDiv.addEventListener('touchmove', (e) => { e.stopPropagation(); }, { capture: true, passive: true });
+  </script>
+  <div class="hero-image-overlay"></div>
+    <div class="box" style="position: relative; z-index: 10; pointer-events: none;">
       
-        <nav>
+        <nav style="pointer-events: auto;">
           
             <img src="images/portfoliologo.img.png" alt="Description of the image" class="logo">
             <div class="hamburger-icon" onclick="toggleMenu()">
@@ -21,8 +29,8 @@
           </div>
             <ul class="indian" id="indian">
             <li><a href="https://leetcode.com/u/ANUP_Thakur/" class="leetcode"><img src="images\leetcodeicon.jpeg" style="width: 50px; height: 50px;"></a>  </li>
-<!--             <li><a href="https://www.codechef.com/users/anupthakur_108" class="codechef"><img src="images\CodeChef-735x400.jpg" style="width: 80px; height: 40px; color: black;"></a>  </li> -->
-                <li><a href="#main"><button class="navi"><i class="fas fa-home" id="ic"></i>HOME</button> </a></li>
+
+                <li><a href="#MAIN"><button class="navi"><i class="fas fa-home" id="ic"></i>HOME</button> </a></li>
                 <li><a href="#my"><button class="navi" ><i class="fas fa-user" id="ic"></i>About</button></a></li>
                 <li><a href="#portfolio"><button class="navi"><i class="fas fa-folder-open" id="ic"></i>Projects</button> </a></li>
                 <!-- <li><a href="#"><button class="navi">Achievement</button> </a></li> -->
@@ -32,7 +40,7 @@
          <div class="first">  
             <h1>Hey,I'm Anup</h1> 
             <p> I am a <span class=" passionate">passionate,</span> <span id="changing-text"></span></p>
-            <div class="download-cv">
+            <div class="download-cv" style="pointer-events: auto;">
               <a href="path/to/your-cv.pdf" download="YourName-CV.pdf" class="cv-button">
                 <i class="fa-solid fa-download"></i> Download CV
               </a>
@@ -94,36 +102,90 @@
 <div id ="portfolio">
 <div class="container">
   <h4 class = "sub-title">My Projects</h4>
-  <div class="work-list">
-    <div class="work">
-      <img src="images/work3.jpg">
-
-      <div class="layer">
-        <h3>bat ball stump game</h3>
-        <p>A game based on user and computer action</p>
-        <a href="https://anupthakurr.github.io/bat-ball-game/"><button id="view"><i class="fa-solid fa-link"></i>view project</button></a>
+  <div class="glowing-cards-grid">
+    <!-- Project 1: AutoCode.AI -->
+    <div class="glowing-card-wrapper" style="--delay: 0.1s;">
+      <div class="glow-bg" style="background: linear-gradient(137deg, #FF3D77 0%, #FFB1CE 45%, #FF9D3C 100%);"></div>
+      <div class="glowing-card" style="background: linear-gradient(#1A1A1C, #1A1A1C) padding-box, linear-gradient(137deg, #FF3D77 0%, #FFB1CE 45%, #FF9D3C 100%) border-box;">
+        <div class="card-content">
+          <div class="icon-wrapper">
+            <i data-lucide="bot" style="width: 32px; height: 32px; stroke-width: 2.5px;"></i>
+          </div>
+          <div class="text-content">
+            <h3 class="card-title">AutoCode.AI</h3>
+            <p class="card-description">Full Stack AI Coding Assistant</p>
+            <a href="https://autocodeai.netlify.app/"><button id="view" style="margin: 15px 0 0 0; padding: 8px 12px;"><i class="fa-solid fa-link"></i>view project</button></a>
+          </div>
+        </div>
       </div>
-
     </div>
-    <div class="work">
-      <img src="images\enhaning-female-portrait-quality-with-AI-Ease-free-AI-photo-enhancer.webp">
- 
-      <div class="layer">
-        <h3>ImageEnhance AI </h3>
-        <p>Full Stack AI Saas App</p>
-        <a href="https://image-enhance-ai-fhig.vercel.app/"><button id="view"><i class="fa-solid fa-link"></i>view project</button></a>
-      </div>
 
+    <!-- Project 2: Bat Ball Stump Game -->
+    <div class="glowing-card-wrapper" style="--delay: 0.2s;">
+      <div class="glow-bg" style="background: linear-gradient(137deg, #FFFFFF 0%, #7DD3FC 45%, #06B6D4 100%);"></div>
+      <div class="glowing-card" style="background: linear-gradient(#1A1A1C, #1A1A1C) padding-box, linear-gradient(137deg, #FFFFFF 0%, #7DD3FC 45%, #06B6D4 100%) border-box;">
+        <div class="card-content">
+          <div class="icon-wrapper">
+            <i data-lucide="gamepad-2" style="width: 32px; height: 32px; stroke-width: 2.5px;"></i>
+          </div>
+          <div class="text-content">
+            <h3 class="card-title">Bat Ball Game</h3>
+            <p class="card-description">A game based on user and computer action</p>
+            <a href="https://anupthakurr.github.io/bat-ball-game/"><button id="view" style="margin: 15px 0 0 0; padding: 8px 12px;"><i class="fa-solid fa-link"></i>view project</button></a>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="work">
-      <img src="images\vanilla javascript crud operation with source code learn to create, read, update, and delete data.jpg">
 
-      <div class="layer">
-        <h3>Enquiry Manager </h3>
-        <p>MERN Stack App</p>
-        <a href="https://crud-operation-app-6.onrender.com/"><button id="view"><i class="fa-solid fa-link"></i>view project</button></a>
+    <!-- Project 3: ImageEnhance AI -->
+    <div class="glowing-card-wrapper" style="--delay: 0.3s;">
+      <div class="glow-bg" style="background: linear-gradient(137deg, #4361EE 0%, #E0AEFF 45%, #F72585 100%);"></div>
+      <div class="glowing-card" style="background: linear-gradient(#1A1A1C, #1A1A1C) padding-box, linear-gradient(137deg, #4361EE 0%, #E0AEFF 45%, #F72585 100%) border-box;">
+        <div class="card-content">
+          <div class="icon-wrapper">
+            <i data-lucide="image" style="width: 32px; height: 32px; stroke-width: 2.5px;"></i>
+          </div>
+          <div class="text-content">
+            <h3 class="card-title">ImageEnhance AI</h3>
+            <p class="card-description">Full Stack AI Saas App</p>
+            <a href="https://image-enhance-ai-fhig.vercel.app/"><button id="view" style="margin: 15px 0 0 0; padding: 8px 12px;"><i class="fa-solid fa-link"></i>view project</button></a>
+          </div>
+        </div>
       </div>
+    </div>
 
+    <!-- Project 4: Enquiry Manager -->
+    <div class="glowing-card-wrapper" style="--delay: 0.4s;">
+      <div class="glow-bg" style="background: linear-gradient(137deg, #10B981 0%, #6EE7B7 45%, #059669 100%);"></div>
+      <div class="glowing-card" style="background: linear-gradient(#1A1A1C, #1A1A1C) padding-box, linear-gradient(137deg, #10B981 0%, #6EE7B7 45%, #059669 100%) border-box;">
+        <div class="card-content">
+          <div class="icon-wrapper">
+            <i data-lucide="database" style="width: 32px; height: 32px; stroke-width: 2.5px;"></i>
+          </div>
+          <div class="text-content">
+            <h3 class="card-title">Enquiry Manager</h3>
+            <p class="card-description">MERN Stack App</p>
+            <a href="https://crud-operation-app-6.onrender.com/"><button id="view" style="margin: 15px 0 0 0; padding: 8px 12px;"><i class="fa-solid fa-link"></i>view project</button></a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Project 5: FrameSense AI -->
+    <div class="glowing-card-wrapper" style="--delay: 0.5s;">
+      <div class="glow-bg" style="background: linear-gradient(137deg, #8B5CF6 0%, #D8B4FE 45%, #C084FC 100%);"></div>
+      <div class="glowing-card" style="background: linear-gradient(#1A1A1C, #1A1A1C) padding-box, linear-gradient(137deg, #8B5CF6 0%, #D8B4FE 45%, #C084FC 100%) border-box;">
+        <div class="card-content">
+          <div class="icon-wrapper">
+            <i data-lucide="video" style="width: 32px; height: 32px; stroke-width: 2.5px;"></i>
+          </div>
+          <div class="text-content">
+            <h3 class="card-title">FrameSense AI</h3>
+            <p class="card-description">AI-Powered Video Analytics</p>
+            <a href="https://frame-sense-ai.vercel.app/"><button id="view" style="margin: 15px 0 0 0; padding: 8px 12px;"><i class="fa-solid fa-link"></i>view project</button></a>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
@@ -216,24 +278,12 @@ const delayBetweenWords = 1500;
          event.currentTarget.classList.add("active-link")
         document.getElementById(tabname).classList.add("active-tab");
     }
-    //--------------------------------------------------------custom cursor------------------------------------------------------------------------------------------- 
-    var box = document.querySelector('#MAIN');
-var curr = document.querySelector('.cursor'); 
-
-function isSmallScreen() {
-  return window.innerWidth <= 768; 
-}
-
-box.addEventListener("mousemove", function(dts) {
-  if (!isSmallScreen()) {
-    curr.style.left = dts.x + "px";
-    curr.style.top = dts.y + "px";
-  }
-});
  </script>
 
  
+ <script src="https://unpkg.com/lucide@latest"></script>
  <script>
+  lucide.createIcons();
   function toggleMenu() {
         const menu = document.getElementById('indian');
         menu.classList.toggle('show');
@@ -243,6 +293,3 @@ box.addEventListener("mousemove", function(dts) {
 
 </body>
 </html>
-
-
-

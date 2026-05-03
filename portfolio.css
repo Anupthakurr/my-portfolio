@@ -14,11 +14,25 @@ body {
 #MAIN {
   width: 100%;
   height: 100vh;
-  background-image: url(images/anup3.jpg);
+  background-image: none;
   background-repeat: no-repeat;
   background-size: 35%;
   background-position: 80% 85%;
   background-attachment: fixed;
+}
+.hero-image-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 5;
+  background-image: url(images/anup3.jpg);
+  background-repeat: no-repeat;
+  background-size: 35%;
+  background-position: 90% 85%;
+
 }
 .box {
   padding: 10px 15px;
@@ -587,4 +601,122 @@ body.light-mode .social-links a:hover {
 }
 ::-webkit-scrollbar-thumb:hover {
   background: #00bcd4;
+}
+
+/* ============================ */
+/* ✨ GLOWING FEATURE CARDS     */
+/* ============================ */
+.glowing-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 40px;
+  width: 100%;
+  max-width: 936px;
+  margin: 0 auto;
+  font-family: sans-serif;
+}
+@media (min-width: 768px) {
+  .glowing-cards-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+  }
+}
+
+.glowing-card-wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  width: 100%;
+  max-width: 260px;
+  margin: 0 auto;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: cardFadeIn 0.8s ease-out forwards;
+  animation-delay: var(--delay);
+}
+@media (min-width: 768px) {
+  .glowing-card-wrapper {
+    max-width: 300px;
+  }
+}
+
+@keyframes cardFadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.glow-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 260px;
+  opacity: 0.6;
+  border-radius: 40px;
+  pointer-events: none;
+  filter: blur(45px);
+  z-index: 0;
+}
+@media (min-width: 768px) {
+  .glow-bg {
+    height: 300px;
+  }
+}
+
+.glowing-card {
+  position: relative;
+  align-self: stretch;
+  height: 260px;
+  border-radius: 40px;
+  z-index: 10;
+  overflow: hidden;
+  border: 8px solid transparent;
+  width: 100%;
+  box-sizing: border-box;
+}
+@media (min-width: 768px) {
+  .glowing-card {
+    height: 300px;
+  }
+}
+
+.card-content {
+  width: 100%;
+  height: 100%;
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-sizing: border-box;
+}
+
+.icon-wrapper {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.card-title {
+  color: white;
+  font-weight: 500;
+  font-size: 20px;
+  margin-bottom: 12px;
+  letter-spacing: -0.02em;
+}
+
+.card-description {
+  color: #9ca3af;
+  font-size: 14px;
+  line-height: 1.6;
+  font-weight: 400;
+}
+.card-description::selection {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+#portfolio {
+  background-color: #0A0A0B;
+  padding: 48px 24px;
 }
