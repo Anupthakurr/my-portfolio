@@ -435,7 +435,7 @@ h4.sub-title {
   .hero-image-overlay {
     background-image: url(images/anup3.jpg);
     background-size: 55%;
-    background-position: right 50%; /* 50% moves it further down the screen */
+    background-position: right 60%; /* 60% moves it further down the screen */
     opacity: 0.6; /* Increase visibility */
   }
 
