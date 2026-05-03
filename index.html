@@ -11,9 +11,11 @@
 <body>
   <div id="MAIN" style="position: relative;">
   <script>
-    // Only load the heavy Spline 3D scene on desktop (>768px) to avoid mobile lag
+    // Only load the heavy Spline 3D scene on desktop to avoid mobile lag.
+    // Use matchMedia (not innerWidth) — it correctly respects the <meta viewport> tag on real devices.
     (function() {
-      if (window.innerWidth > 768) {
+      var isDesktop = window.matchMedia('(min-width: 769px)').matches;
+      if (isDesktop) {
         var script = document.createElement('script');
         script.type = 'module';
         script.src = 'https://unpkg.com/@splinetool/viewer@latest/build/spline-viewer.js';
@@ -22,7 +24,6 @@
           viewer.setAttribute('url', 'https://prod.spline.design/Slk6b8kz3LRlKiyk/scene.splinecode');
           viewer.style.cssText = 'position:absolute;top:0;left:0;width:100%;height:100%;z-index:0;transform:translateZ(0);';
           document.getElementById('MAIN').prepend(viewer);
-          // Only prevent wheel scroll hijack on desktop (not touch)
           var mainDiv = document.getElementById('MAIN');
           mainDiv.addEventListener('wheel', function(e) { e.stopPropagation(); }, { capture: true, passive: true });
         };
