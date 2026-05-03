@@ -435,8 +435,8 @@ h4.sub-title {
   .hero-image-overlay {
     background-image: url(images/anup3.jpg);
     background-size: 55%;
-    background-position: bottom right;
-    opacity: 0.3; /* dim the image so text remains readable */
+    background-position: right 30%; /* Move slightly higher */
+    opacity: 0.6; /* Increase visibility */
   }
 
   .first {
@@ -618,13 +618,13 @@ h4.sub-title {
 
   .glowing-card {
     height: auto;
-    min-height: 250px;
-    padding-bottom: 10px; /* extra space for the button */
+    min-height: 270px;
+    padding-bottom: 20px; /* extra space for the button */
   }
 
   .glow-bg {
     height: 100%;
-    min-height: 250px;
+    min-height: 270px;
   }
 }
 
