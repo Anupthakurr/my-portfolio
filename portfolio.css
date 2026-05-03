@@ -10,6 +10,7 @@ html {
 body {
   background-color: black;
   color: white;
+  -webkit-overflow-scrolling: touch; /* iOS momentum scrolling */
 }
 #MAIN {
   width: 100%;
@@ -19,6 +20,8 @@ body {
   background-size: 35%;
   background-position: 80% 85%;
   background-attachment: fixed;
+  touch-action: pan-y; /* allow native vertical scroll, don't hijack touch */
+  position: relative;
 }
 .hero-image-overlay {
   position: absolute;
@@ -523,6 +526,24 @@ h4.sub-title {
     font-size: 0.9em;
     margin: 0 6px;
   }
+
+  /* --- PERFORMANCE: disable expensive effects on mobile --- */
+  #MAIN {
+    background-attachment: scroll; /* fixed causes repaint on every scroll frame on iOS */
+  }
+
+  .work,
+  .contact-form {
+    backdrop-filter: none;         /* blur filter is GPU-heavy, skip on mobile */
+    -webkit-backdrop-filter: none;
+  }
+
+  /* Hero section is above the fold - always show it immediately */
+  .first {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
 }
 
 /* ============================================================
@@ -651,12 +672,24 @@ body.light-mode .social-links a:hover {
   }
 }
 
+/* Sections start visible by default; JS adds class for enhanced animation */
 .first,
 #about-col-1,
 #about-col-2,
 .work,
 .contact-form {
-  animation: fadeInUp 1s ease forwards;
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.first.section-visible,
+#about-col-1.section-visible,
+#about-col-2.section-visible,
+.work.section-visible,
+.contact-form.section-visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 /* ============================ */
@@ -695,6 +728,7 @@ body.light-mode .social-links a:hover {
   }
 }
 
+/* Cards start hidden; JS adds .card-visible when scrolled into view */
 .glowing-card-wrapper {
   position: relative;
   display: flex;
@@ -706,8 +740,13 @@ body.light-mode .social-links a:hover {
   margin: 0 auto;
   opacity: 0;
   transform: translateY(30px);
-  animation: cardFadeIn 0.8s ease-out forwards;
-  animation-delay: var(--delay);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  transition-delay: var(--delay, 0s);
+}
+
+.glowing-card-wrapper.card-visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 @media (min-width: 768px) {
   .glowing-card-wrapper {

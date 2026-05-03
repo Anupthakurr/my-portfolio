@@ -10,13 +10,25 @@
 </head>
 <body>
   <div id="MAIN" style="position: relative;">
-  <script type="module" src="https://unpkg.com/@splinetool/viewer@latest/build/spline-viewer.js"></script>
-  <spline-viewer url="https://prod.spline.design/Slk6b8kz3LRlKiyk/scene.splinecode" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; will-change: transform; transform: translateZ(0);"></spline-viewer>
   <script>
-    // Prevent the Spline viewer from swallowing scroll events while keeping mouse hover active
-    const mainDiv = document.getElementById('MAIN');
-    mainDiv.addEventListener('wheel', (e) => { e.stopPropagation(); }, { capture: true, passive: true });
-    mainDiv.addEventListener('touchmove', (e) => { e.stopPropagation(); }, { capture: true, passive: true });
+    // Only load the heavy Spline 3D scene on desktop (>768px) to avoid mobile lag
+    (function() {
+      if (window.innerWidth > 768) {
+        var script = document.createElement('script');
+        script.type = 'module';
+        script.src = 'https://unpkg.com/@splinetool/viewer@latest/build/spline-viewer.js';
+        script.onload = function() {
+          var viewer = document.createElement('spline-viewer');
+          viewer.setAttribute('url', 'https://prod.spline.design/Slk6b8kz3LRlKiyk/scene.splinecode');
+          viewer.style.cssText = 'position:absolute;top:0;left:0;width:100%;height:100%;z-index:0;transform:translateZ(0);';
+          document.getElementById('MAIN').prepend(viewer);
+          // Only prevent wheel scroll hijack on desktop (not touch)
+          var mainDiv = document.getElementById('MAIN');
+          mainDiv.addEventListener('wheel', function(e) { e.stopPropagation(); }, { capture: true, passive: true });
+        };
+        document.head.appendChild(script);
+      }
+    })();
   </script>
   <div class="hero-image-overlay"></div>
     <div class="box" style="position: relative; z-index: 10; pointer-events: none;">
@@ -284,10 +296,47 @@ const delayBetweenWords = 1500;
  <script src="https://unpkg.com/lucide@latest"></script>
  <script>
   lucide.createIcons();
+
   function toggleMenu() {
-        const menu = document.getElementById('indian');
-        menu.classList.toggle('show');
-    }
+    const menu = document.getElementById('indian');
+    menu.classList.toggle('show');
+  }
+
+  // Close hamburger menu when a nav link is tapped on mobile
+  document.querySelectorAll('#indian a').forEach(function(link) {
+    link.addEventListener('click', function() {
+      document.getElementById('indian').classList.remove('show');
+    });
+  });
+
+  // ── IntersectionObserver for scroll-triggered animations ──────────────────
+  // Glowing cards: animate in when they enter the viewport
+  var cardObserver = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('card-visible');
+        cardObserver.unobserve(entry.target); // only animate once
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.glowing-card-wrapper').forEach(function(card) {
+    cardObserver.observe(card);
+  });
+
+  // Section fade-in: about columns, work cards, contact form
+  var sectionObserver = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('section-visible');
+        sectionObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.08 });
+
+  document.querySelectorAll('#about-col-1, #about-col-2, .work, .contact-form, .first').forEach(function(el) {
+    sectionObserver.observe(el);
+  });
  </script>
 
 
