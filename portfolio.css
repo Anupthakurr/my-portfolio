@@ -32,7 +32,6 @@ body {
   background-repeat: no-repeat;
   background-size: 35%;
   background-position: 90% 85%;
-
 }
 .box {
   padding: 10px 15px;
@@ -55,14 +54,13 @@ body {
 }
 .hidden-cursor {
   visibility: hidden;
-  /* Alternatively, you can use opacity for a fade-out effect: */
-  /* opacity: 0; */
 }
 
 nav {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  align-items: center;
 }
 .logo {
   width: 160px;
@@ -84,7 +82,7 @@ div {
 #changing-text {
   font-size: 1.5rem;
   font-style: italic;
-  border-right: 2px solid white; /* Cursor effect */
+  border-right: 2px solid white;
   display: inline-block;
   white-space: nowrap;
   overflow: hidden;
@@ -104,22 +102,22 @@ a {
 }
 
 .cv-button {
-  gap: 10px; /* Space between icon and text */
+  gap: 10px;
   padding: 10px 10px;
   color: black;
-  background-color: aquamarine; /* Button background */
+  background-color: aquamarine;
   text-decoration: none;
   border-radius: 5px;
   transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 .cv-button:hover {
-  background-color: #0056b3; /* Darker blue on hover */
-  transform: translateY(-5px); /* Slight upward movement */
+  background-color: #0056b3;
+  transform: translateY(-5px);
 }
 
 .cv-button i {
-  font-size: 1.1em; /* Icon size */
+  font-size: 1.1em;
 }
 
 .navi {
@@ -145,11 +143,9 @@ a {
   justify-content: center;
   flex-wrap: wrap;
 }
-/*  */
 #my {
   padding: 20px;
 }
-/*  */
 #about-col-1 {
   width: 30%;
   margin: 100px 20px;
@@ -201,7 +197,8 @@ a {
 }
 /* --------------------------------------------------------------------------------------------------------------------------------------------- */
 #portfolio {
-  padding: 20px 70px;
+  background-color: #0A0A0B;
+  padding: 48px 24px;
   font-size: 30px;
   color: aqua;
 }
@@ -231,7 +228,7 @@ h4.sub-title {
   font-size: 15px;
   width: 100%;
   height: 0%;
-  background: rgba(0, 255, 255, 0); /* Fully transparent initially */
+  background: rgba(0, 255, 255, 0);
   border-radius: 10px;
   position: absolute;
   left: 0;
@@ -242,14 +239,14 @@ h4.sub-title {
   flex-direction: column;
   text-align: center;
   overflow: hidden;
-  border: 0px solid transparent; /* Remove border initially */
+  border: 0px solid transparent;
   transition: height 0.3s ease;
 }
 
 .work:hover .layer {
   height: 100%;
-  background: aqua; /* Blue background on hover */
-  border: 2px solid rgba(255, 255, 255, 0.2); /* Optional border appears on hover */
+  background: aqua;
+  border: 2px solid rgba(255, 255, 255, 0.2);
 }
 
 .work:hover img {
@@ -286,7 +283,6 @@ h4.sub-title {
 }
 /* ------------------------------------------------contact me-------------------------------------------------------------------------------- */
 
-/* Contact Section Styles */
 #contact {
   padding: 50px 20px;
   background-color: black;
@@ -308,7 +304,7 @@ h4.sub-title {
 .contact-form {
   max-width: 600px;
   margin: 0 auto 30px;
-  background-color: #000; /* Black background for the form */
+  background-color: #000;
   padding: 30px;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -365,78 +361,112 @@ h4.sub-title {
   transform: translateY(-5px);
 }
 .social-links i {
-  font-size: 1.5em; /* Slightly larger icon size */
+  font-size: 1.5em;
   margin-right: 7px;
 }
 .leetcode img {
-  width: 35px; /* Adjust as per your requirement */
-  height: auto; /* Keeps aspect ratio */
-  vertical-align: middle; /* Aligns the icon with text */
+  width: 35px;
+  height: auto;
+  vertical-align: middle;
 }
 .codechef img {
-  width: 27px; /* Adjust as per your requirement */
-  height: auto; /* Keeps aspect ratio */
+  width: 27px;
+  height: auto;
   vertical-align: middle;
   margin-right: 7px;
-  margin-bottom: 6px; /* Aligns the icon with text */
+  margin-bottom: 6px;
 }
+
 /* ---------------------------------make website responsive----------------------------------------------------------------------------------- */
 .hamburger-icon {
-  font-size: 20px;
+  font-size: 24px;
   cursor: pointer;
   display: none;
   color: white;
+  padding: 5px 10px;
+  margin-top: 5px;
 }
+
+/* ============================================================
+   TABLET & MOBILE: max-width 768px
+   ============================================================ */
 @media (max-width: 768px) {
+
+  /* --- NAV --- */
+  .hamburger-icon {
+    display: block;
+  }
+
   .indian {
-    display: none; /* Initially hidden */
+    display: none;
     flex-direction: column;
-    background-color: none;
+    align-items: center;
+    background-color: rgba(10, 10, 11, 0.97);
     position: absolute;
-    top: 60px;
-    right: 0;
-    width: 25%;
+    top: 65px;
+    right: 15px;
+    width: 220px;
     text-align: center;
-    padding: 10px 0;
+    padding: 15px 0;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 255, 255, 0.15);
+    z-index: 9999;
+    border: 1px solid rgba(0, 255, 255, 0.2);
   }
 
   .indian.show {
-    display: flex; /* Show menu when toggled */
+    display: flex;
   }
 
-  .hamburger-icon {
-    display: block; /* Show hamburger on small screens */
-  }
-}
-
-@media (max-width: 768px) {
-  nav .logo {
-    margin-left: 0%;
-  }
-  .passionate {
-    display: none;
+  .indian li {
+    display: block;
+    margin: 10px 0;
+    width: 100%;
   }
 
-  /* First section typography */
+  nav ul li {
+    margin: 8px 0;
+  }
+
+  /* --- HERO SECTION --- */
+  .hero-image-overlay {
+    background-image: none; /* Hide portrait on mobile to avoid overlap */
+  }
+
+  .first {
+    margin-top: 25%;
+  }
+
   .first h1 {
-    font-size: 1.9em; /* Adjust heading size */
+    font-size: 1.9em;
   }
 
   .first p {
-    font-size: 1.4em; /* Adjust paragraph size */
-    margin-left: 0%;
+    font-size: 1.2em;
+    margin-left: 0;
   }
 
   #changing-text {
     text-align: left;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
   }
 
-  /* About section */
+  .passionate {
+    display: none;
+  }
+
+  /* --- ABOUT SECTION --- */
   #about-col-1,
   #about-col-2 {
-    width: 100%; /* Stack columns vertically */
+    width: 100%;
     margin: 10px 0;
+  }
+
+  #about-col-1 {
+    margin-top: 20px;
+    max-width: 280px;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .subtitle {
@@ -445,13 +475,26 @@ h4.sub-title {
   }
 
   .tab-titles {
-    flex-wrap: wrap; /* Stack tabs in smaller screens */
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    gap: 0;
   }
 
-  /* Portfolio section */
+  .tab-links {
+    margin-right: 0;
+    font-size: 15px;
+    flex: 1;
+    text-align: center;
+  }
+
+  /* --- PORTFOLIO SECTION --- */
+  #portfolio {
+    padding: 40px 16px;
+  }
+
   .work-list {
-    grid-template-columns: 1fr; /* Single-column layout for smaller screens */
-    gap: 20px; /* Reduce spacing */
+    grid-template-columns: 1fr;
+    gap: 20px;
   }
 
   .work img {
@@ -459,72 +502,102 @@ h4.sub-title {
   }
 
   .layer {
-    font-size: 0.9em; /* Smaller text size for project descriptions */
+    font-size: 0.9em;
   }
 
-  /* Contact section */
+  /* --- GLOWING CARDS --- */
+  .glowing-cards-grid {
+    padding: 0 8px;
+  }
+
+  /* --- CONTACT --- */
   #contact h2 {
     font-size: 2em;
   }
 
   .contact-form {
-    padding: 20px; /* Reduced padding for small screens */
+    padding: 20px;
   }
 
   .social-links a {
-    font-size: 0.7em; /* Smaller icons and links */
+    font-size: 0.9em;
+    margin: 0 6px;
   }
 }
 
+/* ============================================================
+   SMALL PHONES: max-width 431px
+   ============================================================ */
 @media (max-width: 431px) {
-  /* Further adjustments for very small screens */
   body {
-    font-size: 0.8rem; /* General font scaling */
+    font-size: 0.85rem;
   }
 
   nav {
-    padding: 5px; /* Adjust spacing in navigation */
+    padding: 5px;
+  }
+
+  .first {
+    margin-top: 30%;
+  }
+
+  .first h1 {
+    font-size: 1.5em;
+  }
+
+  .first p {
+    font-size: 0.95em;
   }
 
   .cv-button {
-    font-size: 1.1em; /* Adjust button size */
+    font-size: 1em;
     padding: 9px;
-    margin-top: 40px;
+    margin-top: 30px;
   }
+
   .subtitle {
     text-align: center;
     font-weight: 100;
   }
 
-  .first h1 {
-    font-size: 1.5em; /* Smaller heading */
-  }
-
-  .first p {
-    font-size: 0.9em;
-  }
-
   .tab-links {
-    margin-right: 9px; /* Reduce spacing between tabs */
+    margin-right: 14px;
     font-size: 14px;
   }
 
   .tab-links::after {
-    height: 1px; /* Thinner underline */
+    height: 1px;
   }
 
   .layer h3,
   .layer p {
-    font-size: 0.4em; /* Smaller text in project overlays */
+    font-size: 0.8em;
   }
+
   #MAIN {
     background-size: 85%;
     background-position: 60% 75%;
   }
+
   #ic {
     display: none;
-    color: rgb(5, 38, 29);
-    margin-right: 2px;
+  }
+
+  .glowing-cards-grid {
+    padding: 0 4px;
+    gap: 28px;
+  }
+
+  .glowing-card-wrapper {
+    max-width: 100%;
+  }
+
+  .glowing-card {
+    height: 220px;
+  }
+
+  .glow-bg {
+    height: 220px;
   }
 }
 
@@ -714,9 +787,4 @@ body.light-mode .social-links a:hover {
 }
 .card-description::selection {
   background: rgba(255, 255, 255, 0.2);
-}
-
-#portfolio {
-  background-color: #0A0A0B;
-  padding: 48px 24px;
 }
