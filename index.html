@@ -349,9 +349,9 @@
     </div> <!-- end swiper-slide -->
   </div>
   <div class="swiper-pagination"></div>
+  </div>
   <button class="swiper-button-next" type="button" aria-label="Show next project"></button>
   <button class="swiper-button-prev" type="button" aria-label="Show previous project"></button>
-  </div>
   </div>
 </div>
 </div>
@@ -509,16 +509,17 @@ const delayBetweenWords = 1500;
       loopAdditionalSlides: 3,
       speed: reduceMotion ? 0 : 700,
       watchSlidesProgress: true,
+      initialSlide: 0,
       keyboard: {
         enabled: true,
         onlyInViewport: true,
       },
       coverflowEffect: {
-        rotate: 42,
-        stretch: 12,
-        depth: 190,
-        modifier: 1,
-        scale: 0.86,
+        rotate: 58,
+        stretch: 18,
+        depth: 310,
+        modifier: 1.05,
+        scale: 0.88,
         slideShadows: true,
       },
       autoplay: reduceMotion ? false : {
@@ -544,21 +545,21 @@ const delayBetweenWords = 1500;
       breakpoints: {
         0: {
           coverflowEffect: {
-            rotate: 24,
+            rotate: 38,
             stretch: 0,
-            depth: 105,
+            depth: 150,
             modifier: 1,
-            scale: 0.9,
+            scale: 0.91,
             slideShadows: true,
           },
         },
         769: {
           coverflowEffect: {
-            rotate: 42,
-            stretch: 12,
-            depth: 190,
-            modifier: 1,
-            scale: 0.86,
+            rotate: 58,
+            stretch: 18,
+            depth: 310,
+            modifier: 1.05,
+            scale: 0.88,
             slideShadows: true,
           },
         },

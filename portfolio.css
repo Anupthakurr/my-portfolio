@@ -635,14 +635,13 @@ h4.sub-title {
   }
 
   .glowing-card {
-    height: auto;
-    min-height: 270px;
-    padding-bottom: 20px; /* extra space for the button */
+    height: 100%;
+    min-height: 0;
   }
 
   .glow-bg {
     height: 100%;
-    min-height: 270px;
+    min-height: 0;
   }
 }
 
@@ -740,25 +739,27 @@ body.light-mode .social-links a:hover {
 /* --- 3D Coverflow Carousel Container --- */
 .projects-carousel {
   position: relative;
-  width: min(1180px, 100%);
-  margin: 0 auto;
-  perspective: 1200px;
+  width: min(1500px, 100%);
+  min-height: 610px;
+  margin: 20px auto 0;
+  perspective: 1600px;
 }
 
 .projects-swiper {
   width: 100%;
-  padding: 60px 0 80px;
+  min-height: 610px;
+  padding: 34px 0 76px;
   overflow: visible;
   transform-style: preserve-3d;
 }
 
 /* Each slide is a fixed width so coverflow knows its size */
 .projects-swiper .swiper-slide {
-  width: clamp(260px, 28vw, 320px);
+  width: clamp(420px, 38vw, 560px);
   display: flex;
   justify-content: center;
   align-items: stretch;
-  height: 320px;
+  height: 520px;
   transform-style: preserve-3d;
   backface-visibility: hidden;
   transition-property: transform, opacity, filter;
@@ -766,22 +767,23 @@ body.light-mode .social-links a:hover {
 
 /* Non-active slides look dimmer and smaller (enhanced by JS coverflowEffect) */
 .projects-swiper .swiper-slide:not(.swiper-slide-active) {
-  opacity: 0.62;
-  filter: saturate(0.72) brightness(0.68);
+  opacity: 0.7;
+  filter: saturate(0.78) brightness(0.64);
 }
 .projects-swiper .swiper-slide.swiper-slide-active {
   opacity: 1;
   filter: saturate(1) brightness(1);
+  z-index: 10;
 }
 
 .projects-swiper .swiper-slide-shadow-left,
 .projects-swiper .swiper-slide-shadow-right {
-  border-radius: 8px;
+  border-radius: 34px;
 }
 
 /* --- Pagination Dots (teal like in image) --- */
 .swiper-pagination {
-  bottom: 20px !important;
+  bottom: 18px !important;
 }
 .swiper-pagination-bullet {
   width: 10px;
@@ -809,10 +811,16 @@ body.light-mode .social-links a:hover {
   color: aqua !important;
   backdrop-filter: blur(8px);
   transition: all 0.3s ease;
-  top: 50% !important;
+  top: 46% !important;
   transform: translateY(-50%);
   cursor: pointer;
   z-index: 20;
+}
+.projects-carousel > .swiper-button-prev {
+  left: 18px !important;
+}
+.projects-carousel > .swiper-button-next {
+  right: 18px !important;
 }
 .swiper-button-next::after,
 .swiper-button-prev::after {
@@ -880,10 +888,10 @@ body.light-mode .social-links a:hover {
   left: 0;
   width: 100%;
   height: 100%;
-  opacity: 0.6;
-  border-radius: 10px;
+  opacity: 0.76;
+  border-radius: 34px;
   pointer-events: none;
-  filter: blur(45px);
+  filter: blur(54px);
   z-index: 0;
 }
 
@@ -891,10 +899,10 @@ body.light-mode .social-links a:hover {
   position: relative;
   align-self: stretch;
   height: 100%;
-  border-radius: 8px;
+  border-radius: 34px;
   z-index: 10;
   overflow: hidden;
-  border: 3px solid transparent;
+  border: 6px solid transparent;
   width: 100%;
   box-sizing: border-box;
   box-shadow: 0 24px 55px rgba(0, 0, 0, 0.48);
@@ -908,7 +916,7 @@ body.light-mode .social-links a:hover {
 .card-content {
   width: 100%;
   height: 100%;
-  padding: 28px;
+  padding: 54px 58px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -917,30 +925,67 @@ body.light-mode .social-links a:hover {
 
 .icon-wrapper {
   color: rgba(255, 255, 255, 0.9);
+  transform: scale(1.25);
+  transform-origin: top left;
 }
 
 .card-title {
   color: white;
-  font-weight: 500;
-  font-size: 20px;
-  margin-bottom: 12px;
+  font-weight: 700;
+  font-size: 34px;
+  margin-bottom: 18px;
   letter-spacing: 0;
 }
 
 .card-description {
   color: #9ca3af;
-  font-size: 14px;
-  line-height: 1.6;
+  font-size: 20px;
+  line-height: 1.55;
   font-weight: 400;
 }
 .card-description::selection {
   background: rgba(255, 255, 255, 0.2);
 }
 
+.glowing-card #view {
+  min-height: 50px;
+  padding: 0 20px !important;
+  border: 1px solid aqua;
+  color: aqua;
+  background: rgba(0, 255, 255, 0.06);
+  font-size: 15px;
+}
+
+.glowing-card #view:hover {
+  color: #071012;
+  background: aqua;
+}
+
 @media (max-width: 768px) {
+  .projects-carousel,
+  .projects-swiper {
+    min-height: 440px;
+  }
+
+  .projects-swiper {
+    padding-top: 24px;
+  }
+
   .projects-swiper .swiper-slide {
-    width: min(78vw, 290px);
-    height: 300px;
+    width: min(78vw, 330px);
+    height: 360px;
+  }
+
+  .card-content {
+    padding: 34px 30px;
+  }
+
+  .card-title {
+    font-size: 25px;
+  }
+
+  .card-description {
+    font-size: 16px;
   }
 
   .swiper-button-next,
@@ -950,11 +995,11 @@ body.light-mode .social-links a:hover {
   }
 
   .swiper-button-next {
-    right: 0 !important;
+    right: -4px !important;
   }
 
   .swiper-button-prev {
-    left: 0 !important;
+    left: -4px !important;
   }
 }
 
