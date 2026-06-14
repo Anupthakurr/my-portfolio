@@ -11,6 +11,7 @@ body {
   background-color: black;
   color: white;
   -webkit-overflow-scrolling: touch; /* iOS momentum scrolling */
+  overflow-x: hidden;
 }
 #MAIN {
   width: 100%;
@@ -19,7 +20,6 @@ body {
   background-repeat: no-repeat;
   background-size: 35%;
   background-position: 80% 85%;
-  background-attachment: fixed;
   touch-action: pan-y; /* allow native vertical scroll, don't hijack touch */
   position: relative;
 }
@@ -148,6 +148,8 @@ a {
 }
 #my {
   padding: 20px;
+  content-visibility: auto;
+  contain-intrinsic-size: auto 850px;
 }
 #about-col-1 {
   width: 30%;
@@ -205,6 +207,8 @@ a {
   font-size: 30px;
   color: aqua;
   overflow: hidden;
+  content-visibility: auto;
+  contain-intrinsic-size: auto 780px;
 }
 .work-list {
   display: grid;
@@ -292,6 +296,8 @@ h4.sub-title {
   padding: 50px 20px;
   background-color: black;
   text-align: center;
+  content-visibility: auto;
+  contain-intrinsic-size: auto 720px;
 }
 
 #contact h2 {
@@ -536,17 +542,6 @@ h4.sub-title {
     margin: 0 6px;
   }
 
-  /* --- PERFORMANCE: disable expensive effects on mobile --- */
-  #MAIN {
-    background-attachment: scroll; /* fixed causes repaint on every scroll frame on iOS */
-  }
-
-  .work,
-  .contact-form {
-    backdrop-filter: none;         /* blur filter is GPU-heavy, skip on mobile */
-    -webkit-backdrop-filter: none;
-  }
-
   /* Hero section is above the fold - always show it immediately */
   .first {
     opacity: 1 !important;
@@ -661,7 +656,6 @@ body.light-mode .social-links a:hover {
 /* ============================ */
 .work,
 .contact-form {
-  backdrop-filter: blur(10px);
   background-color: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.1);
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
@@ -749,17 +743,16 @@ body.light-mode .social-links a:hover {
   height: 520px;
   transform-style: preserve-3d;
   backface-visibility: hidden;
-  transition-property: transform, opacity, filter;
+  transition-property: transform, opacity;
+  contain: layout paint style;
 }
 
 /* Non-active slides look dimmer and smaller (enhanced by JS coverflowEffect) */
 .projects-swiper .swiper-slide:not(.swiper-slide-active) {
   opacity: 0.7;
-  filter: saturate(0.78) brightness(0.64);
 }
 .projects-swiper .swiper-slide.swiper-slide-active {
   opacity: 1;
-  filter: saturate(1) brightness(1);
   z-index: 10;
 }
 
@@ -798,7 +791,6 @@ body.light-mode .social-links a:hover {
   background: rgba(0, 255, 255, 0.12) !important;
   border: 1.5px solid rgba(0, 255, 255, 0.5) !important;
   color: aqua !important;
-  backdrop-filter: blur(8px);
   transition: all 0.3s ease;
   top: 46% !important;
   transform: translateY(-50%);
@@ -877,11 +869,22 @@ body.light-mode .social-links a:hover {
   left: 0;
   width: 100%;
   height: 100%;
-  opacity: 0.76;
+  opacity: 0;
   border-radius: 34px;
   pointer-events: none;
-  filter: blur(54px);
+  filter: blur(28px);
   z-index: 0;
+  transform: scale(0.92);
+  transition: opacity 0.35s ease;
+}
+
+.swiper-slide-active .glow-bg {
+  opacity: 0.58;
+}
+
+.swiper-slide-prev .glow-bg,
+.swiper-slide-next .glow-bg {
+  opacity: 0.2;
 }
 
 .glowing-card {

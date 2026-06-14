@@ -23,12 +23,34 @@
         script.onload = function() {
           var viewer = document.createElement('spline-viewer');
           viewer.setAttribute('url', 'https://prod.spline.design/Slk6b8kz3LRlKiyk/scene.splinecode');
-          viewer.style.cssText = 'position:absolute;top:0;left:0;width:100%;height:100%;z-index:0;transform:translateZ(0);';
+          viewer.setAttribute('loading', 'lazy');
+          viewer.style.cssText = 'position:absolute;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;';
           document.getElementById('MAIN').prepend(viewer);
-          var mainDiv = document.getElementById('MAIN');
-          mainDiv.addEventListener('wheel', function(e) { e.stopPropagation(); }, { capture: true, passive: true });
+
+          // Stop the WebGL render loop when the hero is no longer visible.
+          var heroObserver = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+              if (entry.isIntersecting) {
+                if (typeof viewer.play === 'function') viewer.play();
+              } else {
+                if (typeof viewer.pause === 'function') viewer.pause();
+              }
+            });
+          }, { threshold: 0.05 });
+
+          heroObserver.observe(document.getElementById('MAIN'));
         };
-        document.head.appendChild(script);
+
+        // Let the first page paint complete before loading the WebGL scene.
+        if ('requestIdleCallback' in window) {
+          requestIdleCallback(function() {
+            document.head.appendChild(script);
+          }, { timeout: 1800 });
+        } else {
+          setTimeout(function() {
+            document.head.appendChild(script);
+          }, 800);
+        }
       }
     })();
   </script>
@@ -564,6 +586,31 @@ const delayBetweenWords = 1500;
         },
       },
     });
+
+    // Autoplay only while the carousel is on screen.
+    if (!reduceMotion && swiper.autoplay) {
+      var carouselIsVisible = false;
+      var carouselObserver = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          carouselIsVisible = entry.isIntersecting;
+          if (carouselIsVisible && !document.hidden) {
+            swiper.autoplay.start();
+          } else {
+            swiper.autoplay.stop();
+          }
+        });
+      }, { threshold: 0.15 });
+
+      carouselObserver.observe(document.querySelector('.projects-carousel'));
+
+      document.addEventListener('visibilitychange', function() {
+        if (document.hidden || !carouselIsVisible) {
+          swiper.autoplay.stop();
+        } else {
+          swiper.autoplay.start();
+        }
+      });
+    }
   });
  </script>
 </body>
