@@ -717,32 +717,74 @@ body.light-mode .social-links a:hover {
 /* ============================ */
 /* ✨ GLOWING FEATURE CARDS     */
 /* ============================ */
+
+/* --- 3D Coverflow Carousel Container --- */
 .projects-swiper {
   width: 100%;
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: 40px 40px 60px 40px; /* Space for pagination and arrows */
-  font-family: sans-serif;
+  padding: 60px 0 80px;
+  overflow: visible;
 }
 
-/* Swiper custom theme */
+/* Each slide is a fixed width so coverflow knows its size */
+.projects-swiper .swiper-slide {
+  width: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  transition: transform 0.4s ease, opacity 0.4s ease;
+}
+
+/* Non-active slides look dimmer and smaller (enhanced by JS coverflowEffect) */
+.projects-swiper .swiper-slide:not(.swiper-slide-active) {
+  opacity: 0.55;
+  filter: brightness(0.6);
+}
+.projects-swiper .swiper-slide.swiper-slide-active {
+  opacity: 1;
+  filter: brightness(1);
+}
+
+/* --- Pagination Dots (teal like in image) --- */
+.swiper-pagination {
+  bottom: 20px !important;
+}
 .swiper-pagination-bullet {
-  background: rgba(255, 255, 255, 0.4) !important;
+  width: 10px;
+  height: 10px;
+  background: rgba(255, 255, 255, 0.3) !important;
+  transition: all 0.3s ease;
 }
 .swiper-pagination-bullet-active {
   background: aqua !important;
-  box-shadow: 0 0 10px aqua;
+  box-shadow: 0 0 12px aqua;
+  width: 24px;
+  border-radius: 5px;
 }
+
+/* --- Custom circular arrow buttons like in the image --- */
 .swiper-button-next,
 .swiper-button-prev {
+  width: 48px !important;
+  height: 48px !important;
+  border-radius: 50% !important;
+  background: rgba(0, 255, 255, 0.12) !important;
+  border: 1.5px solid rgba(0, 255, 255, 0.5) !important;
   color: aqua !important;
+  backdrop-filter: blur(8px);
   transition: all 0.3s ease;
+}
+.swiper-button-next::after,
+.swiper-button-prev::after {
+  font-size: 14px !important;
+  font-weight: bold;
 }
 .swiper-button-next:hover,
 .swiper-button-prev:hover {
-  text-shadow: 0 0 10px aqua;
+  background: rgba(0, 255, 255, 0.28) !important;
+  box-shadow: 0 0 18px rgba(0, 255, 255, 0.4);
   transform: scale(1.1);
 }
+
 
 /* Cards start hidden; JS adds .card-visible when scrolled into view */
 .glowing-card-wrapper {
@@ -764,6 +806,15 @@ body.light-mode .social-links a:hover {
   opacity: 1;
   transform: translateY(0);
 }
+
+/* Inside swiper slides, always show card wrappers immediately so coverflow works */
+.swiper-slide .glowing-card-wrapper {
+  opacity: 1 !important;
+  transform: none !important;
+  transition: none !important;
+  max-width: 100%;
+}
+
 @media (min-width: 768px) {
   .glowing-card-wrapper {
     max-width: 300px;
