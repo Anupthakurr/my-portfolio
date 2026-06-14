@@ -229,14 +229,6 @@ h4.sub-title {
   font-size: 42px;
   text-align: center;
 }
-.projects-intro {
-  max-width: 720px;
-  margin: 12px auto 0;
-  color: #a9b0b7;
-  font-size: 16px;
-  line-height: 1.7;
-  text-align: center;
-}
 .layer {
   font-size: 15px;
   width: 100%;
@@ -510,11 +502,6 @@ h4.sub-title {
 
   h4.sub-title {
     font-size: 32px;
-  }
-
-  .projects-intro {
-    padding: 0 12px;
-    font-size: 14px;
   }
 
   .work-list {
