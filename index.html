@@ -531,6 +531,11 @@ const delayBetweenWords = 1500;
       speed: reduceMotion ? 0 : 700,
       watchSlidesProgress: true,
       initialSlide: 0,
+      preventClicks: false,
+      preventClicksPropagation: false,
+      touchStartPreventDefault: false,
+      noSwiping: true,
+      noSwipingSelector: '.project-link',
       keyboard: {
         enabled: true,
         onlyInViewport: true,

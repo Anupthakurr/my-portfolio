@@ -958,6 +958,9 @@ body.light-mode .social-links a:hover {
   position: relative;
   z-index: 30;
   pointer-events: auto;
+  touch-action: manipulation;
+  user-select: none;
+  -webkit-user-select: none;
   cursor: pointer;
   transition: color 0.25s ease, background-color 0.25s ease, transform 0.25s ease;
 }
