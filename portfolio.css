@@ -512,7 +512,7 @@ h4.sub-title {
   }
 
   /* --- GLOWING CARDS --- */
-  .glowing-cards-grid {
+  .projects-swiper {
     padding: 0 8px;
   }
 
@@ -607,9 +607,8 @@ h4.sub-title {
     display: none;
   }
 
-  .glowing-cards-grid {
+  .projects-swiper {
     padding: 0 4px;
-    gap: 28px;
   }
 
   .glowing-card-wrapper {
@@ -718,20 +717,31 @@ body.light-mode .social-links a:hover {
 /* ============================ */
 /* ✨ GLOWING FEATURE CARDS     */
 /* ============================ */
-.glowing-cards-grid {
-  display: grid;
-  grid-template-columns: repeat(1, 1fr);
-  gap: 40px;
+.projects-swiper {
   width: 100%;
-  max-width: 936px;
+  max-width: 1000px;
   margin: 0 auto;
+  padding: 40px 40px 60px 40px; /* Space for pagination and arrows */
   font-family: sans-serif;
 }
-@media (min-width: 768px) {
-  .glowing-cards-grid {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 12px;
-  }
+
+/* Swiper custom theme */
+.swiper-pagination-bullet {
+  background: rgba(255, 255, 255, 0.4) !important;
+}
+.swiper-pagination-bullet-active {
+  background: aqua !important;
+  box-shadow: 0 0 10px aqua;
+}
+.swiper-button-next,
+.swiper-button-prev {
+  color: aqua !important;
+  transition: all 0.3s ease;
+}
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+  text-shadow: 0 0 10px aqua;
+  transform: scale(1.1);
 }
 
 /* Cards start hidden; JS adds .card-visible when scrolled into view */

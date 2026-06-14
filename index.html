@@ -6,6 +6,7 @@
     <title>portfolio project</title>
     <!-- Font Awesome CDN -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <link rel="stylesheet" href="portfolio.css?v=5">
 </head>
 <body>
@@ -115,7 +116,8 @@
 <div id ="portfolio">
 <div class="container">
   <h4 class = "sub-title">My Projects</h4>
-  <div class="glowing-cards-grid">
+  <div class="swiper projects-swiper">
+  <div class="swiper-wrapper">
     <!-- Project 1: AutoCode.AI -->
     <div class="glowing-card-wrapper" style="--delay: 0.1s;">
       <div class="glow-bg" style="background: linear-gradient(137deg, #FF3D77 0%, #FFB1CE 45%, #FF9D3C 100%);"></div>
@@ -303,6 +305,10 @@
       </div>
     </div>
   </div>
+  <div class="swiper-pagination"></div>
+  <div class="swiper-button-next"></div>
+  <div class="swiper-button-prev"></div>
+  </div>
 </div>
 </div>
 <!-- --------------------------------------------------contact me------------------------------------------------------------------------------ -->
@@ -443,5 +449,40 @@ const delayBetweenWords = 1500;
  </script>
 
 
+
+ <!-- Swiper JS -->
+ <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+ <script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var swiper = new Swiper('.projects-swiper', {
+      slidesPerView: 1,
+      spaceBetween: 30,
+      loop: true,
+      autoplay: {
+        delay: 3000,
+        disableOnInteraction: false,
+        pauseOnMouseEnter: true
+      },
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+      breakpoints: {
+        768: {
+          slidesPerView: 2,
+          spaceBetween: 40,
+        },
+        1024: {
+          slidesPerView: 3,
+          spaceBetween: 50,
+        },
+      }
+    });
+  });
+ </script>
 </body>
 </html>
