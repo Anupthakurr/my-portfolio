@@ -116,7 +116,9 @@
 <div id ="portfolio">
 <div class="container">
   <h4 class = "sub-title">My Projects</h4>
-  <div class="swiper projects-swiper">
+  <p class="projects-intro">Selected builds across AI, full-stack development, and interactive web experiences.</p>
+  <div class="projects-carousel">
+  <div class="swiper projects-swiper" aria-label="Project carousel">
   <div class="swiper-wrapper">
     <div class="swiper-slide">
     <!-- Project 1: AutoCode.AI -->
@@ -347,8 +349,9 @@
     </div> <!-- end swiper-slide -->
   </div>
   <div class="swiper-pagination"></div>
-  <div class="swiper-button-next"></div>
-  <div class="swiper-button-prev"></div>
+  <button class="swiper-button-next" type="button" aria-label="Show next project"></button>
+  <button class="swiper-button-prev" type="button" aria-label="Show previous project"></button>
+  </div>
   </div>
 </div>
 </div>
@@ -495,32 +498,70 @@ const delayBetweenWords = 1500;
  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
  <script>
   document.addEventListener('DOMContentLoaded', function() {
+    var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
     var swiper = new Swiper('.projects-swiper', {
       effect: 'coverflow',
       grabCursor: true,
       centeredSlides: true,
       loop: true,
       slidesPerView: 'auto',
-      coverflowEffect: {
-        rotate: 0,
-        stretch: 0,
-        depth: 200,
-        modifier: 2.5,
-        scale: 0.82,
-        slideShadows: false,
+      loopAdditionalSlides: 3,
+      speed: reduceMotion ? 0 : 700,
+      watchSlidesProgress: true,
+      keyboard: {
+        enabled: true,
+        onlyInViewport: true,
       },
-      autoplay: {
+      coverflowEffect: {
+        rotate: 42,
+        stretch: 12,
+        depth: 190,
+        modifier: 1,
+        scale: 0.86,
+        slideShadows: true,
+      },
+      autoplay: reduceMotion ? false : {
         delay: 2800,
         disableOnInteraction: false,
-        pauseOnMouseEnter: true
+        pauseOnMouseEnter: true,
       },
       pagination: {
         el: '.swiper-pagination',
         clickable: true,
+        dynamicBullets: true,
       },
       navigation: {
         nextEl: '.swiper-button-next',
         prevEl: '.swiper-button-prev',
+      },
+      a11y: {
+        enabled: true,
+        prevSlideMessage: 'Previous project',
+        nextSlideMessage: 'Next project',
+        paginationBulletMessage: 'Go to project {{index}}',
+      },
+      breakpoints: {
+        0: {
+          coverflowEffect: {
+            rotate: 24,
+            stretch: 0,
+            depth: 105,
+            modifier: 1,
+            scale: 0.9,
+            slideShadows: true,
+          },
+        },
+        769: {
+          coverflowEffect: {
+            rotate: 42,
+            stretch: 12,
+            depth: 190,
+            modifier: 1,
+            scale: 0.86,
+            slideShadows: true,
+          },
+        },
       },
     });
   });
